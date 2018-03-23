@@ -1,1 +1,1 @@
-# react-native-samsung-smart-tv-controller
+### React Native Samsung smart TV controller
