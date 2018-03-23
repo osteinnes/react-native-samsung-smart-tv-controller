@@ -14,23 +14,22 @@ import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
-  Text,
-  View
+  View,
+  Button
 } from 'react-native';
 
 // Imports nodejs option via RN-bridge
 import nodejs from 'nodejs-mobile-react-native';
 
 type Props = {};
-export default class App extends Component<Props> {
 
+export default class App extends Component<Props> {
 
   // Connect via a RN-tunnel to node-project that controls samsung smart tv.
   componentWillMount()
   {
     nodejs.start("samsung-control.js");
   }
-
 
   render() {
 
@@ -41,6 +40,7 @@ export default class App extends Component<Props> {
     );
 
     return (
+
       <View style={styles.container}>
         <Button title="MUTE" onPress={() => nodejs.channel.send('mute')} />
         <Button title="TURN OFF/ON" onPress={() => nodejs.channel.send('power')} />
@@ -48,6 +48,7 @@ export default class App extends Component<Props> {
         <Button title="DOWN" onPress={() => nodejs.channel.send('down')} />
         <Button title="MENU" onPress={() => nodejs.channel.send('menu')} />
       </View>
+
     );
   }
 }
@@ -58,15 +59,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
